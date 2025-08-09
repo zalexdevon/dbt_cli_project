@@ -8,13 +8,14 @@ variables:
   source_file_limited: "{{vars.taxi}}_tripdata_{{vars.year_month}}_limited.parquet"
   csv_file: "{{vars.taxi}}_tripdata_{{vars.year_month}}.csv"
   limit_num_row: "10000"
-  staging_table: "raw_data.staging_table_{{vars.year_month}}"
-  main_table: "raw_data.{{vars.taxi}}_tripdata"
-  create_main_table_param: '{ "table": "{{vars.main_table}}" }'
-  create_staging_table_param: '{ "table": "{{vars.staging_table}}" }'
+  schema: "raw_data"
+  staging_table: "staging_table_{{vars.year_month}}"
+  main_table: "{{vars.taxi}}_tripdata"
+  create_main_table_param: '{ "table": "{{vars.main_table}}", "schema": "{render(vars.schema)}" }'
+  create_staging_table_param: '{ "table": "{{vars.staging_table}}", "schema": "{render(vars.schema)}" }'
   complete_staging_table_param: '{ "table": "{{vars.staging_table}}", "source_file": "{{vars.source_file}}" }'
   merge_param: '{ "main_table": "{{vars.main_table}}", "staging_table": "{{vars.staging_table}}"  }'
-  remove_staging_table_param: ' {"table": "{{vars.staging_table}}"} '
+  remove_staging_table_param: ' {"table": "{{vars.staging_table}}", "schema": "{render(vars.schema)}"} '
 
 tasks:
   - id: set_label

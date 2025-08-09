@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS "{{table}}" (
+CREATE TABLE IF NOT EXISTS {{schema}}."{{table}}" (
     unique_row_id          text,
     filename               text,
     VendorID               text,
