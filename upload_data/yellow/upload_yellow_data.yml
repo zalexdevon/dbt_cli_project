@@ -41,7 +41,7 @@ tasks:
         type: io.kestra.plugin.scripts.python.Commands
         description: Take only {{render(vars.limit_num_row)}} first rows of data
         beforeCommands:
-          - pip install pandas
+          - pip install pandas pyarrow
         commands:
           - python upload_data/utils/limit_data.py {{ render(vars.source_file)}} {{ render(vars.source_file_limited) }} {{render(vars.limit_num_row)}}
 
