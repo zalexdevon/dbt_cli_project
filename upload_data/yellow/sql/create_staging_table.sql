@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS {{table}} (
+    unique_row_id          text,
+    filename               text,
+    VendorID               text,
+    tpep_pickup_datetime   timestamp,
+    tpep_dropoff_datetime  timestamp,
+    passenger_count        integer,
+    trip_distance          double precision,
+    RatecodeID             text,
+    store_and_fwd_flag     text,
+    PULocationID           text,
+    DOLocationID           text,
+    payment_type           integer,
+    fare_amount            double precision,
+    extra                  double precision,
+    mta_tax                double precision,
+    tip_amount             double precision,
+    tolls_amount           double precision,
+    improvement_surcharge  double precision,
+    total_amount           double precision,
+    congestion_surcharge   double precision
+);
