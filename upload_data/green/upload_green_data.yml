@@ -5,9 +5,9 @@ variables:
   taxi: "green"
   year_month: "2019-01"
   source_file: "{{vars.taxi}}_tripdata_{{vars.year_month}}.parquet"
+  source_file_limited: "{{vars.taxi}}_tripdata_{{vars.year_month}}_limited.parquet"
   csv_file: "{{vars.taxi}}_tripdata_{{vars.year_month}}.csv"
   limit_num_row: "10000"
-  csv_file_limited: "{{vars.taxi}}_tripdata_{{vars.year_month}}_limited.csv"
   staging_table: "raw_data.staging_table_{{vars.year_month}}"
   main_table: "raw_data.{{vars.taxi}}_tripdata"
   create_main_table_param: '{ "table": "{{vars.main_table}}" }'
@@ -37,22 +37,22 @@ tasks:
         commands:
           - wget -q -O {{render(vars.source_file)}} https://d37ci6vzurychx.cloudfront.net/trip-data/{{render(vars.source_file)}}
 
-      - id: convert_parquet_to_csv
-        type: io.kestra.plugin.scripts.python.Commands
-        beforeCommands:
-          - pip install pandas pyarrow
-        commands:
-          - python upload_data/utils/convert_parquet_to_csv.py {{ render(vars.source_file)}} {{ render(vars.csv_file) }}
-
       - id: limit_data
         type: io.kestra.plugin.scripts.python.Commands
         description: Take only {{render(vars.limit_num_row)}} first rows of data
         beforeCommands:
           - pip install pandas
+        commands:
+          - python upload_data/utils/limit_data.py {{ render(vars.source_file)}} {{ render(vars.source_file_limited) }} {{render(vars.limit_num_row)}}
+
+      - id: convert_parquet_to_csv
+        type: io.kestra.plugin.scripts.python.Commands
+        beforeCommands:
+          - pip install pandas pyarrow
         outputFiles:
           - "*.csv"
         commands:
-          - python upload_data/utils/limit_data.py {{ render(vars.csv_file)}} {{ render(vars.csv_file_limited) }} {{render(vars.limit_num_row)}}
+          - python upload_data/utils/convert_parquet_to_csv.py {{ render(vars.source_file_limited)}} {{ render(vars.csv_file) }}
 
       - id: read_sql
         type: io.kestra.plugin.scripts.python.Commands
@@ -76,7 +76,7 @@ tasks:
       # - id: copy_data_to_staging_table
       #   type: io.kestra.plugin.jdbc.postgresql.CopyIn
       #   format: CSV
-      #   from: "{{outputs.limit_data.outputFiles[render(vars.csv_file_limited)]}}"
+      #   from: "{{outputs.convert_parquet_to_csv.outputFiles[render(vars.csv_file)]}}"
       #   table: "{{render(vars.staging_table)}}"
       #   header: true
       #   columns:
