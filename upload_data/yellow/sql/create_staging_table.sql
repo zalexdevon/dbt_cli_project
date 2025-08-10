@@ -18,5 +18,6 @@ CREATE TABLE IF NOT EXISTS {{table}} (
     tolls_amount           double precision,
     improvement_surcharge  double precision,
     total_amount           double precision,
-    congestion_surcharge   double precision
+    congestion_surcharge   double precision, 
+    airport_fee   double precision
 );

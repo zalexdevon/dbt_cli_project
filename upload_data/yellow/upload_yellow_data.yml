@@ -101,6 +101,7 @@ tasks:
             improvement_surcharge,
             total_amount,
             congestion_surcharge,
+            airport_fee,
           ]
 
       - id: complete_staging_table
