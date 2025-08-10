@@ -56,3 +56,27 @@
 [0m09:17:32.159013 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AA5444AE10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AA540F4CE0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002AA540F73E0>]}
 [0m09:17:32.159013 [debug] [MainThread]: Flushing usage events
 [0m09:17:33.632148 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m09:19:12.750465 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000272E49D88C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000272E1E95760>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000272E49DADB0>]}
+
+
+============================== 09:19:12.760970 | 794afa49-90a6-4f21-8ca3-f657d2813749 ==============================
+[0m09:19:12.760970 [info ] [MainThread]: Running with dbt=1.10.7
+[0m09:19:12.763985 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\ADMIN\\.dbt', 'version_check': 'True', 'debug': 'False', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt init', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m09:19:48.310257 [debug] [MainThread]: Starter project path: C:\Users\ADMIN\miniconda3\Lib\site-packages\dbt\include\starter_project
+[0m09:19:48.389082 [info ] [MainThread]: 
+Your new dbt project "dbt_project" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m09:19:48.390242 [info ] [MainThread]: Setting up your profile.
