@@ -5,6 +5,6 @@ unique_row_id = md5(
     COALESCE(CAST(lpep_pickup_datetime AS text), '')
 ),
 filename = '{{source_file}}', 
-passenger_count = CAST(CAST(NULLIF(passenger_count, '') AS numeric) AS integer), 
-payment_type = CAST(CAST(NULLIF(payment_type, '') AS numeric) AS integer), 
-trip_type = CAST(CAST(NULLIF(trip_type, '') AS numeric) AS integer);
+passenger_count = CAST(passenger_count AS integer), 
+payment_type = CAST(payment_type AS integer), 
+trip_type = CAST(trip_type AS integer);
