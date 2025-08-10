@@ -6,6 +6,11 @@ import json
 
 # Đọc đối số dòng lệnh đầu tiên (argv[1])
 params_str = sys.argv[1]
+
+# TODO: d
+print(f"params_str: {params_str}")
+# d
+
 file_path = sys.argv[2]
 
 # Chuyển từ JSON string → dict
