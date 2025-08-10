@@ -8,8 +8,9 @@ variables:
   source_file_limited: "{{vars.taxi}}_tripdata_{{vars.year_month}}_limited.parquet"
   csv_file: "{{vars.taxi}}_tripdata_{{vars.year_month}}.csv"
   limit_num_row: "10000"
-  staging_table: 'raw_data."staging_table_{{vars.year_month}}"'
-  main_table: 'raw_data."{{vars.taxi}}_tripdata"'
+  year_month_for_table: "{{ vars.year_month | replace('-', '_') }}"
+  staging_table: "raw_data.staging_table_{{vars.year_month_for_table}}"
+  main_table: "raw_data.{{vars.taxi}}_tripdata"
   create_main_table_param: '{ "table": "{{vars.main_table}}" }'
   create_staging_table_param: '{ "table": "{{vars.staging_table}}" }'
   complete_staging_table_param: '{ "table": "{{vars.staging_table}}", "source_file": "{{vars.source_file}}" }'
