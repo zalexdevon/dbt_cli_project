@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS {{table}} (
     RatecodeID             text,
     PULocationID           text,
     DOLocationID           text,
-    passenger_count        integer,
+    passenger_count        text,
     trip_distance          double precision,
     fare_amount            double precision,
     extra                  double precision,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS {{table}} (
     ehail_fee              double precision,
     improvement_surcharge  double precision,
     total_amount           double precision,
-    payment_type           integer,
-    trip_type              integer,
+    payment_type           text,
+    trip_type              text,
     congestion_surcharge   double precision
 );
