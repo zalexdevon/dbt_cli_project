@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS {{schema}}."{{table}}"; 
+DROP TABLE IF EXISTS "{{table}}"; 
