@@ -6,5 +6,5 @@ unique_row_id = md5(
 ),
 filename = '{{source_file}}', 
 passenger_count = CAST(passenger_count AS integer), 
-payment_type = CAST(payment_type AS integer), 
+payment_type = CAST(payment_type AS integer)
 ;
