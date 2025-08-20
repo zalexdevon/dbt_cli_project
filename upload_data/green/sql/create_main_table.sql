@@ -1,6 +1,8 @@
 CREATE TABLE IF NOT EXISTS {{table}} (
     unique_row_id          text,
     filename               text,
+
+    
     VendorID               text,
     lpep_pickup_datetime   timestamp,
     lpep_dropoff_datetime  timestamp,

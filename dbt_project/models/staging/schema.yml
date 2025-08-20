@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: staging
+    database: ny_taxi
+    schema: raw_data
+
+    tables:
+      - name: green_tripdata
+      - name: yellow_tripdata
+      - name: taxi_zone_lookup

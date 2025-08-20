@@ -3,8 +3,7 @@ namespace: trantam
 
 variables:
   taxi: "yellow"
-  # year_month: "{{trigger.date | date('yyyy-MM')}}"
-  year_month: "2019-01"
+  year_month: "{{trigger.date | date('yyyy-MM')}}"
   source_file: "{{vars.taxi}}_tripdata_{{vars.year_month}}.parquet"
   source_file_limited: "{{vars.taxi}}_tripdata_{{vars.year_month}}_limited.parquet"
   csv_file: "{{vars.taxi}}_tripdata_{{vars.year_month}}.csv"
@@ -126,7 +125,8 @@ pluginDefaults:
       url: jdbc:postgresql://host.docker.internal:5432/ny_taxi
       username: root
       password: root
-# triggers:
-#   - id: schedule
-#     type: io.kestra.plugin.core.trigger.Schedule
-#     cron: "0 9 1 * *"
+
+triggers:
+  - id: schedule
+    type: io.kestra.plugin.core.trigger.Schedule
+    cron: "0 9 1 * *"

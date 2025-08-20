@@ -25,10 +25,14 @@ tasks:
         commands:
           - python upload_data/utils/read_sql.py '{}'  "upload_data/taxi_zone_lookup/sql/create_table.sql"
 
+      - id: create_table
+        type: io.kestra.plugin.jdbc.postgresql.Queries
+        sql: "{{ outputs.read_sql.vars.create_table }}"
+
       - id: copy_data_to_table
         type: io.kestra.plugin.jdbc.postgresql.CopyIn
         format: CSV
-        from: "{{outputs.extract.outputFiles[taxi_zone_lookup.csv]}}"
+        from: '{{outputs.extract.outputFiles["taxi_zone_lookup.csv"]}}'
         table: "raw_data.taxi_zone_lookup"
         header: true
         columns: [LocationID, Borough, Zone, service_zone]
